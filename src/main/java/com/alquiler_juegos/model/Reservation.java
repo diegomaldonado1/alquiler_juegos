@@ -5,6 +5,7 @@
 package com.alquiler_juegos.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -22,6 +23,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "reservation")
+@JsonPropertyOrder({"idReservation","startDate","devolutionDate","status","game","client","score"})
 public class Reservation implements Serializable {
     
     @Id

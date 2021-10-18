@@ -5,6 +5,7 @@
 package com.alquiler_juegos.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +22,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "message")
+@JsonPropertyOrder({"idMessage","messageText","game","client"})
 public class Message implements Serializable {
     
     @Id
@@ -30,7 +32,7 @@ public class Message implements Serializable {
    
    @ManyToOne
    @JoinColumn(name="id")
-   @JsonIgnoreProperties({"messages", "client", "reservations"})
+   @JsonIgnoreProperties({"messages", "client", "reservations" })
    private Game game;
     
     @ManyToOne
