@@ -22,7 +22,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "games")
+@Table(name = "game")
 public class Game implements Serializable {
     @Id
     @GeneratedValue
@@ -34,15 +34,15 @@ public class Game implements Serializable {
     
     @ManyToOne
     @JoinColumn(name ="categoryId")
-    @JsonIgnoreProperties("games")
+    @JsonIgnoreProperties("game")
     private Category category;
     
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "games")
-    @JsonIgnoreProperties({"games", "client"})
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
+    @JsonIgnoreProperties({"game", "client"})
     private List<Message> messages;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "games")
-    @JsonIgnoreProperties({"games", "client"})
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
+    @JsonIgnoreProperties({"game", "client"})
     private List<Reservation> reservations;
 
     public Integer getId() {
