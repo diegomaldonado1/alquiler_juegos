@@ -4,8 +4,10 @@
  */
 package com.alquiler_juegos.controller;
 
+import com.alquiler_juegos.model.CountClient;
 import com.alquiler_juegos.service.ServiceReservation;
 import com.alquiler_juegos.model.Reservation;
+import com.alquiler_juegos.model.StatusReservation;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,20 @@ public class ControllerReservation {
         return servicio.deleteReservation(reservationId);
     }
     
+    @GetMapping("/report-status")
+    public StatusReservation getReservas(){
+        return servicio.reporteStatusServicio();
+    }
+    
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+     public List<Reservation> getReservasTiempo (@PathVariable("dateOne")String dateOne, @PathVariable("dateTwo")String dateTwo ){
+         return servicio.reporteTiempoServicio(dateOne, dateTwo);
+     }
+     
+     @GetMapping("/report-clients")
+     public List<CountClient> getClientes(){
+         return servicio.reporteClientesServicio();
+     }
     
     
 }
